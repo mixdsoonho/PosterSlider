@@ -9,8 +9,9 @@ public class RemoteCachedVideo extends VideoPoster implements Parcelable {
     private Uri uri;
     private HttpProxyCacheServer cacheServer;
 
-    public RemoteCachedVideo(Uri uri) {
+    public RemoteCachedVideo(Uri uri, HttpProxyCacheServer cacheServer) {
         this.uri = uri;
+        this.cacheServer = cacheServer;
     }
 
     public Uri getUri() {
