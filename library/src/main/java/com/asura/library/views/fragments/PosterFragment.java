@@ -195,13 +195,10 @@ public class PosterFragment extends Fragment implements Player.EventListener{
                 else if(poster instanceof RemoteCachedVideo){
                     RemoteCachedVideo video = (RemoteCachedVideo) poster;
 
-                    HttpProxyCacheServer proxyServer = new HttpProxyCacheServer.Builder(getContext()).maxCacheSize(1024 * 1024 * 1024).build();
-
-                    String proxyURL = proxyServer.getProxyUrl(video.getUri().toString());
+                    String proxyURL = video.getCacheServer().getProxyUrl(video.getUri().toString());
 
                     DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getContext(),
                             Util.getUserAgent(getContext(), getActivity().getApplicationContext().getPackageName()));
-
 
                     player.prepare(new ProgressiveMediaSource.Factory(dataSourceFactory)
                             .createMediaSource(Uri.parse(proxyURL)));

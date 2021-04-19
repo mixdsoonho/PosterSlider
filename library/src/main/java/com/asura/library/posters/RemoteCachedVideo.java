@@ -3,9 +3,11 @@ package com.asura.library.posters;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.danikula.videocache.HttpProxyCacheServer;
 
 public class RemoteCachedVideo extends VideoPoster implements Parcelable {
     private Uri uri;
+    private HttpProxyCacheServer cacheServer;
 
     public RemoteCachedVideo(Uri uri) {
         this.uri = uri;
@@ -14,6 +16,8 @@ public class RemoteCachedVideo extends VideoPoster implements Parcelable {
     public Uri getUri() {
         return uri;
     }
+
+    public HttpProxyCacheServer getCacheServer() { return cacheServer; }
 
     public RemoteCachedVideo(Parcel in){
         uri = in.readParcelable(Uri.class.getClassLoader());
